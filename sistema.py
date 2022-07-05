@@ -79,8 +79,8 @@ def menu_check():
 
     return op
 
-def func_create(cpf, nome, salario, ocupacao):
-    funcionario[cpf] = {'nome': nome, 'cpf': cpf, 'salario': salario, 'ocupacao': ocupacao}
+def func_create(data):
+    funcionario[data['cpf']] = {'nome': data['nome'], 'cpf': data['cpf'], 'salario': data['salario'], 'ocupacao': data['ocupacao']}
 
 def func_search():
     pass
@@ -101,8 +101,15 @@ def modulo_funcionario():
             #Verificar O Cpf Aqui
             salario = input("Digite o salario do funcionario: ")
             ocupacao = input("Digite a ocupação do funcionário: ")
+
+            data = {
+                "nome": nome,
+                "cpf": cpf,
+                "salario": salario,
+                "ocupacao": ocupacao
+            }
             
-            func_create(cpf, nome, salario, ocupacao)
+            func_create(data)
 
         elif op == '2':
             func_update()
