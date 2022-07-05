@@ -3,6 +3,82 @@ from datetime import date
 
 funcionario = {}
 
+def menu_main():
+    print("--------------------------------------------")
+    print("---------  Sistema do Hotel Feliz  ---------")
+    print("--------------------------------------------")
+    print('1 - Hóspede')
+    print('2 - Funcionario')
+    print('3 - Reservas')
+    print("4 - Check-in e Check-out")
+    print("0 - Sair")
+
+    op = int(input("\nDigite a opção: "))
+
+    return op
+
+def menu_hospede():
+    os.system('cls')
+
+    print("------------------------------")
+    print("---------  Hóspedes  ---------")
+    print("------------------------------")
+    print('1 - Cadastrar hóspedes')
+    print('2 - Atualizar hóspedes')
+    print("3 - Consultar hóspedes")
+    print("4 - Deletar hóspedes")
+    print("0 - Voltar")
+
+    op = int(input("\nDigite a opção: "))
+
+    return op
+
+def menu_funcionario():
+    os.system('cls')
+
+    print("---------------------------------")
+    print("---------  Funcionário  ---------")
+    print("---------------------------------")
+    print('1 - Cadastrar funcionário')
+    print('2 - Atualizar funcionário')
+    print("3 - Consultar funcionário")
+    print("4 - Deletar funcionário")
+    print("0 - Voltar")
+        
+    op = int(input("\nDigite a opção: "))
+
+    return op
+
+def menu_reserva():
+    os.system('cls')
+
+    print("------------------------------")
+    print("---------  Reservas  ---------")
+    print("------------------------------")
+    print('1 - Criar reserva')
+    print('2 - Atualizar reserva')
+    print("3 - Consultar reserva")
+    print("4 - Cancelar reserva")
+    print("0 - Voltar")
+
+    op = int(input("\nDigite a opção: "))
+
+    return op
+
+def menu_check():
+    os.system('cls')
+
+    print("------------------------------------------")
+    print("---------  Check-in e Check-Out  ---------")
+    print("------------------------------------------")
+    print("1 - Check-in")
+    print("2 - Check-out")
+    print("0 - Voltar")
+
+    op = int(input("\nDigite a opção: "))
+
+    return op
+
 def func_create(cpf, nome, salario, ocupacao):
     funcionario[cpf] = {'nome': nome, 'cpf': cpf, 'salario': salario, 'ocupacao': ocupacao}
 
@@ -18,47 +94,10 @@ def func_delete(cpf):
 def func_read():
     pass
 
-while True:
+def modulo_funcionario():
+    op = menu_funcionario()
 
-    print("--------------------------------------------")
-    print("---------  Sistema do Hotel Feliz  ---------")
-    print("--------------------------------------------")
-    print('1 - Hóspede')
-    print('2 - Funcionario')
-    print('3 - Reservas')
-    print("4 - Check-in e Check-out")
-    print("0 - Sair")
-
-    op = int(input("Digite: "))
-
-    if op == 1:
-        os.system('cls')
-
-        print("------------------------------")
-        print("---------  Hóspedes  ---------")
-        print("------------------------------")
-        print('1 - Cadastrar hóspedes')
-        print('2 - Atualizar hóspedes')
-        print("3 - Consultar hóspedes")
-        print("4 - Deletar hóspedes")
-        print("0 - Voltar")
-
-        op = int(input("Digite: "))
-
-    elif op == 2:
-        os.system('cls')
-
-        print("---------------------------------")
-        print("---------  Funcionário  ---------")
-        print("---------------------------------")
-        print('1 - Cadastrar funcionário')
-        print('2 - Atualizar funcionário')
-        print("3 - Consultar funcionário")
-        print("4 - Deletar funcionário")
-        print("0 - Voltar")
-        
-        op = int(input("\nDigite a opção: "))
-        
+    while op != 0:
         if op == 1:
             nome = input("Digite o nome do funcionario: ")
             cpf = input("Digite o cpf do funcionario: ")
@@ -79,21 +118,32 @@ while True:
             cpf = input('Digite o cpf do Funcionario: ')
             func_delete(cpf)
 
-    elif op == 3:
-        os.system('cls')
+        else:
+            print('Seleção inválida') 
 
-        print("------------------------------")
-        print("---------  Reservas  ---------")
-        print("------------------------------")
-        print('1 - Criar reserva')
-        print('2 - Atualizar reserva')
-        print("3 - Consultar reserva")
-        print("4 - Cancelar reserva")
-        print("0 - Voltar")
+        print()
+        input('Tecle ENTER para continuar')
+
+    op = menu_funcionario()
+
+op = menu_main()
+
+while op != 0:
+    if op == 1:
+        menu_hospede()
+
+    elif op == 2:
+        menu_funcionario()
+
+    elif op == 3:
+        menu_reserva()
 
     elif op == 4:
-        os.system('cls')
+        menu_check()
 
-        print("1 - Check-in")
-        print("2 - Check-out")
-        print("0 - Voltar")
+    else:
+        print('\nSeleção inválida') 
+
+    input('Tecle ENTER para continuar')
+
+    esc = menu_main()
