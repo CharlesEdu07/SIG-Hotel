@@ -13,7 +13,7 @@ def menu_main():
     print("4 - Check-in e Check-out")
     print("0 - Sair")
 
-    op = int(input("\nDigite a opção: "))
+    op = input("\nDigite a opção: ")
 
     return op
 
@@ -29,7 +29,7 @@ def menu_hospede():
     print("4 - Deletar hóspedes")
     print("0 - Voltar")
 
-    op = int(input("\nDigite a opção: "))
+    op = input("\nDigite a opção: ")
 
     return op
 
@@ -45,7 +45,7 @@ def menu_funcionario():
     print("4 - Deletar funcionário")
     print("0 - Voltar")
         
-    op = int(input("\nDigite a opção: "))
+    op = input("\nDigite a opção: ")
 
     return op
 
@@ -61,7 +61,7 @@ def menu_reserva():
     print("4 - Cancelar reserva")
     print("0 - Voltar")
 
-    op = int(input("\nDigite a opção: "))
+    op = input("\nDigite a opção: ")
 
     return op
 
@@ -75,7 +75,7 @@ def menu_check():
     print("2 - Check-out")
     print("0 - Voltar")
 
-    op = int(input("\nDigite a opção: "))
+    op = input("\nDigite a opção: ")
 
     return op
 
@@ -91,14 +91,11 @@ def func_update():
 def func_delete(cpf):
     del funcionario[cpf]
 
-def func_read():
-    pass
-
 def modulo_funcionario():
     op = menu_funcionario()
 
-    while op != 0:
-        if op == 1:
+    while op != '0':
+        if op == '1':
             nome = input("Digite o nome do funcionario: ")
             cpf = input("Digite o cpf do funcionario: ")
             #Verificar O Cpf Aqui
@@ -107,43 +104,47 @@ def modulo_funcionario():
             
             func_create(cpf, nome, salario, ocupacao)
 
-        elif op == 2:
+        elif op == '2':
             func_update()
 
-        elif op == 3:
+        elif op == '3':
             print(funcionario)
             #func_search()
             
-        elif op == 4:
+        elif op == '4':
             cpf = input('Digite o cpf do Funcionario: ')
             func_delete(cpf)
 
         else:
-            print('Seleção inválida') 
+            print('\nSeleção inválida') 
 
         print()
         input('Tecle ENTER para continuar')
 
-    op = menu_funcionario()
+        op = menu_funcionario()
 
 op = menu_main()
 
-while op != 0:
-    if op == 1:
-        menu_hospede()
+while op != '0':
+    if op == '1':
+        #modulo_hospede()
+        print("a")
 
-    elif op == 2:
-        menu_funcionario()
+    elif op == '2':
+        modulo_funcionario()
 
-    elif op == 3:
-        menu_reserva()
+    elif op == '3':
+        #modulo_reserva()
+        print("a")
 
-    elif op == 4:
-        menu_check()
+    elif op == '4':
+        #modulo_check()
+        print("a")
 
     else:
         print('\nSeleção inválida') 
 
+    print()
     input('Tecle ENTER para continuar')
 
-    esc = menu_main()
+    op = menu_main()
