@@ -91,7 +91,7 @@ def func_update(cpf,data):
     if data["salario"] != '' :
         funcionario[cpf]["salario"] = data['salario']
     else:
-        print('Nenhum valor foi alterado')
+        print('Nenhum dado foi alterado')
        
 def func_delete(cpf):
     del funcionario[cpf]
