@@ -94,7 +94,11 @@ def func_update(cpf,data):
         print('Nenhum dado foi alterado')
        
 def func_delete(cpf):
-    del funcionario[cpf]
+    if funcionario[cpf] != '':
+        del funcionario[cpf]
+        print('Funcionario deletado com sucesso')
+    else:
+        print('Funcionario não encontrado')
 
 def modulo_funcionario():
     op = menu_funcionario()
