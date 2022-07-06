@@ -1,0 +1,24 @@
+''' 
+reservas = {
+    "apt":{
+        "classe":"standard",
+        "ocupado":False,
+        "data_entrada":date.today(),
+        "data_saida":date.today(),
+        "hospede": hospede['cpf']
+        tentar dizer qual hospede está no quarto
+
+
+    }
+}
+
+
+func ={ 
+    #pf:{
+        "nome": nome,
+        "cpf": cpf,
+        "salario": salario,
+    }
+}
+
+'''
