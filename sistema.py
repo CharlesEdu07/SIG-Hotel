@@ -85,11 +85,20 @@ def func_create(data):
 def func_search():
     pass
 
-def func_update():
-    pass
-
+def func_update(cpf,data):
+    if data["ocupacao"] != '' :
+        funcionario[cpf]["ocupacao"] = data['ocupacao']
+    if data["salario"] != '' :
+        funcionario[cpf]["salario"] = data['salario']
+    else:
+        print('Nenhum dado foi alterado')
+       
 def func_delete(cpf):
-    del funcionario[cpf]
+    if funcionario[cpf] != '':
+        del funcionario[cpf]
+        print('Funcionario deletado com sucesso')
+    else:
+        print('Funcionario não encontrado')
 
 def modulo_funcionario():
     op = menu_funcionario()
@@ -112,7 +121,19 @@ def modulo_funcionario():
             func_create(data)
 
         elif op == '2':
-            func_update()
+            
+            cpf = input("Digite o cpf do funcionario: ")
+            #Verificar O Cpf Aqui
+           
+            salario = input("Digite o novo salario do funcionario: ")
+            ocupacao = input("Digite a nova ocupação do funcionário: ")
+            
+            data = {
+                "ocupacao": ocupacao,
+                "salario": salario
+            }
+
+            func_update(cpf,data)
 
         elif op == '3':
             print(funcionario)
