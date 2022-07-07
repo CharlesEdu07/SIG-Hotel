@@ -33,7 +33,13 @@ def menu_funcionario():
     return op
 
 def func_create(data):
-    funcionario[data['cpf']] = {'nome': data['nome'], 'cpf': data['cpf'], 'salario': data['salario'], 'ocupacao': data['ocupacao']}
+    if data['cpf'] not in funcionario:
+        funcionario[data['cpf']] = {'nome': data['nome'], 'cpf': data['cpf'], 'salario': data['salario'], 'ocupacao': data['ocupacao']}
+        
+        print('\nFuncionario cadastrado com sucesso')
+
+    else:
+        print('\nFuncionario ja existe')
 
 def func_read():
     print()

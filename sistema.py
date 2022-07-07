@@ -3,6 +3,7 @@ from datetime import date
 from main_menu import *
 from hospede import *
 from funcionario import *
+from reserva import *
 
 op = menu_main()
 
@@ -14,9 +15,8 @@ while op != '0':
         modulo_funcionario()
 
     elif op == '3':
-        #modulo_reserva()
-        print("a")
-
+        modulo_reserva()
+      
     elif op == '4':
         #modulo_check()
         print("a")

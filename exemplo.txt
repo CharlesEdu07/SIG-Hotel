@@ -1,4 +1,10 @@
 ''' 
+
+Relacionar check-in e check-out com reservas
+atributos de datas
+
+Se apt já ocupado, então não fazer check-in dnv
+
 reservas = {
     "apt":{
         "classe":"standard",
@@ -7,8 +13,6 @@ reservas = {
         "data_saida":date.today(),
         "hospede": hospede['cpf']
         tentar dizer qual hospede está no quarto
-
-
     }
 }
 

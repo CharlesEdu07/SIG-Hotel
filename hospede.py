@@ -35,7 +35,12 @@ def menu_hospede():
     return op
 
 def hosp_create(data):
-    hospede[data['cpf']] = {'nome': data['nome'], 'cpf': data['cpf'], 'email': data['email'], 'endereco': data['endereco'], 'telefone': data['telefone']}
+    if data["cpf"] not in hospede:
+        hospede[data['cpf']] = {'nome': data['nome'], 'cpf': data['cpf'], 'email': data['email'], 'endereco': data['endereco'], 'telefone': data['telefone']}
+
+        print('\nFuncionario cadastrado com sucesso')
+    else:
+        print('\nHóspede já cadastrado')
 
 def hosp_update(cpf):    
     if cpf in hospede:
@@ -73,7 +78,11 @@ def hosp_search():
     print('Hóspede não encontrado')
 
 def hosp_delete(cpf):
-    del hospede[cpf]
+    if cpf in hospede:
+        del hospede[cpf]
+
+    else:
+        print('Hóspede não encontrado')
 
 def modulo_hospede():
     op = menu_hospede()
