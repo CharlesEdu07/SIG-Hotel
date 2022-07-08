@@ -1,6 +1,8 @@
 import os
 
 def menu_main():
+    os.system('cls')
+    
     print("--------------------------------------------")
     print("---------  Sistema do Hotel Feliz  ---------")
     print("--------------------------------------------")

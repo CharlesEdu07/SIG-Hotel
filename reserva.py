@@ -73,7 +73,7 @@ def res_read():
         print("Quarto: ", key, "\tValor: ", value['valor'], "\tNome: ", value['nome'])
     
 def res_search():
-    apt = input("Digite o número do quarto: ")
+    apt = input("\nDigite o número do quarto: ")
     cpf = input("Digite o CPF do hospede: ")
     
     if apt in reservas and cpf in hospede:
@@ -87,6 +87,9 @@ def res_delete(reserva):
         del reservas[reserva]
 
         print("\nReserva cancelada com sucesso")
+
+    else:
+        print('\nReserva não existe')
 
 def modulo_reserva():
     op = menu_reserva()
@@ -116,14 +119,14 @@ def modulo_reserva():
                     res_create(data)
                 
                 else:
-                    print('Quarto não disponível ou inexistente')
+                    print('\nQuarto não disponível ou inexistente')
             else:
-                print('Hospede não cadastrado')
+                print('\nHospede não cadastrado')
 
         elif op == '2':
-            apt = input("Digite o número do quarto atual: ")
+            apt = input("\nDigite o número do quarto atual: ")
             cpf = input("Digite o CPF do hospede: ")
-            
+
             res_update(cpf, apt)
 
         elif op == '3':
@@ -133,7 +136,7 @@ def modulo_reserva():
             res_search()
             
         elif op == '5':
-            res = input('Digite a reserva a ser deletada: ')
+            res = input('\nDigite a reserva a ser deletada: ')
 
             res_delete(res)
 

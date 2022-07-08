@@ -54,7 +54,7 @@ def func_read():
         "\nOcupacao: ", value['ocupacao'])
 
 def func_search():
-    cpf = input('Digite o CPF do Funcionario: ')
+    cpf = input('\nDigite o CPF do Funcionario: ')
     name = input('Digite o nome do Funcionario: ')
 
     for key, value in funcionario.items():
@@ -62,7 +62,7 @@ def func_search():
             print("Nome: ", value['nome'], "\tCPF: ", value['cpf'], "\tSalario: ", value['salario'], "\tOcupacao: ", value['ocupacao'])
             return
 
-    print('Funcionario não encontrado')
+    print('\nFuncionario não encontrado')
 
 def func_update(cpf):
     if cpf in funcionario:
@@ -72,24 +72,26 @@ def func_update(cpf):
         funcionario[cpf]["salario"] = salario
         funcionario[cpf]["ocupacao"] = ocupacao
 
+        print('\nFuncionario atualizado com sucesso')
+
     else:
-        print('Nenhum dado foi alterado')
+        print('\nNenhum dado foi alterado')
        
 def func_delete(cpf):
     if cpf in funcionario:
         del funcionario[cpf]
 
-        print('Funcionario deletado com sucesso')
+        print('\nFuncionario deletado com sucesso')
 
     else:
-        print('Funcionario não encontrado')
+        print('\nFuncionario não encontrado')
 
 def modulo_funcionario():
     op = menu_funcionario()
 
     while op != '0':
         if op == '1':
-            nome = input("Digite o nome do funcionario: ")
+            nome = input("\nDigite o nome do funcionario: ")
             cpf = input("Digite o CPF do funcionario: ")
             salario = input("Digite o salario do funcionario: ")
             ocupacao = input("Digite a ocupação do funcionário: ")
@@ -104,7 +106,7 @@ def modulo_funcionario():
             func_create(data)
 
         elif op == '2':
-            cpf = input("Digite o CPF do funcionario: ")
+            cpf = input("\nDigite o CPF do funcionario: ")
             #Verificar O Cpf Aqui
 
             func_update(cpf)
@@ -116,8 +118,8 @@ def modulo_funcionario():
             func_search()
             
         elif op == '5':
-            cpf = input('Digite o CPF do Funcionario: ')
-            
+            cpf = input('\nDigite o CPF do Funcionario: ')
+
             func_delete(cpf)
 
         else:

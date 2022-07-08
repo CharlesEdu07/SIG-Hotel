@@ -48,14 +48,14 @@ def hosp_update(cpf):
         endereco = input("Digite o endereco: ")
         telefone = input("Digite o telefone: ")
         
-        hospede[cpf]['email'] = email,
-        hospede[cpf]['endereco'] = endereco,
+        hospede[cpf]['email'] = email
+        hospede[cpf]['endereco'] = endereco
         hospede[cpf]['telefone'] = telefone 
             
-        print('Hóspede atualizado com sucesso')
+        print('\nHóspede atualizado com sucesso')
 
     else:
-        print('Hóspede não encontrado')
+        print('\nHóspede não encontrado')
 
 def hosp_read():
     print()
@@ -71,7 +71,7 @@ def hosp_read():
             "\nEndereço: ", value['endereco'])
 
 def hosp_search():
-    cpf = input('Digite o CPF do Hóspede: ')
+    cpf = input('\nDigite o CPF do Hóspede: ')
     name = input('Digite o nome do Hóspede: ')
 
     for key, value in hospede.items():
@@ -79,14 +79,16 @@ def hosp_search():
             print("Nome: ", value['nome'], "\tCPF: ", value['cpf'], "\tTelefone: ", value['telefone'], "\tEmail: ", value['email'], "\tEndereço: ", value['endereco'])
             return
 
-    print('Hóspede não encontrado')
+    print('\nHóspede não encontrado')
 
 def hosp_delete(cpf):
     if cpf in hospede:
         del hospede[cpf]
 
+        print('\nHóspede deletado com sucesso')
+
     else:
-        print('Hóspede não encontrado')
+        print('\nHóspede não encontrado')
 
 def modulo_hospede():
     op = menu_hospede()
@@ -110,7 +112,7 @@ def modulo_hospede():
             hosp_create(data)
 
         elif op == '2':
-            cpf = input("Digite o CPF do hospede: ")
+            cpf = input("\nDigite o CPF do hospede: ")
             hosp_update(cpf)
 
         elif op == '3':
@@ -120,7 +122,7 @@ def modulo_hospede():
             hosp_search()
             
         elif op == '5':
-            cpf = input('Digite o CPF do hospede: ')
+            cpf = input('\nDigite o CPF do hospede: ')
             hosp_delete(cpf)
 
         else:
