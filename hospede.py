@@ -64,10 +64,14 @@ def hosp_read():
     print("---------------------------------------")
     
     for key, value in hospede.items():
-        print("Nome: ", value['nome'], "\tCPF: ", value['cpf'], "\tTelefone: ", value['telefone'], "\tEmail: ", value['email'], "\tEndereço: ", value['endereco'])
+        print("\nNome: ", value['nome'],
+            "\nCPF: ", value['cpf'],
+            "\nTelefone: ", value['telefone'],
+            "\nEmail: ", value['email'],
+            "\nEndereço: ", value['endereco'])
 
 def hosp_search():
-    cpf = input('Digite o cpf do Hóspede: ')
+    cpf = input('Digite o CPF do Hóspede: ')
     name = input('Digite o nome do Hóspede: ')
 
     for key, value in hospede.items():
@@ -90,7 +94,7 @@ def modulo_hospede():
     while op != '0':
         if op == '1':
             nome = input("Digite o nome do hospede: ")
-            cpf = input("Digite o cpf do hospede: ")
+            cpf = input("Digite o CPF do hospede: ")
             email = input("Digite o email do hospede: ")
             endereco = input("Digite o endereco do hospede: ")
             telefone = input("Digite o telefone do hospede: ")
@@ -116,7 +120,7 @@ def modulo_hospede():
             hosp_search()
             
         elif op == '5':
-            cpf = input('Digite o cpf do hospede: ')
+            cpf = input('Digite o CPF do hospede: ')
             hosp_delete(cpf)
 
         else:

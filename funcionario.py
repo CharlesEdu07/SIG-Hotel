@@ -48,15 +48,18 @@ def func_read():
     print("-------------------------------------------")
     
     for key, value in funcionario.items():
-        print("Nome: ", value['nome'], "\tCpf: ", value['cpf'], "\tSalario: ", value['salario'], "\tOcupacao: ", value['ocupacao'])
+        print("\nNome: ", value['nome'],
+        "\nCPF: ", value['cpf'],
+        "\nSalario: ", value['salario'],
+        "\nOcupacao: ", value['ocupacao'])
 
 def func_search():
-    cpf = input('Digite o cpf do Funcionario: ')
+    cpf = input('Digite o CPF do Funcionario: ')
     name = input('Digite o nome do Funcionario: ')
 
     for key, value in funcionario.items():
         if key == cpf or value['nome'] == name:
-            print("Nome: ", value['nome'], "\tCpf: ", value['cpf'], "\tSalario: ", value['salario'], "\tOcupacao: ", value['ocupacao'])
+            print("Nome: ", value['nome'], "\tCPF: ", value['cpf'], "\tSalario: ", value['salario'], "\tOcupacao: ", value['ocupacao'])
             return
 
     print('Funcionario não encontrado')
@@ -87,7 +90,7 @@ def modulo_funcionario():
     while op != '0':
         if op == '1':
             nome = input("Digite o nome do funcionario: ")
-            cpf = input("Digite o cpf do funcionario: ")
+            cpf = input("Digite o CPF do funcionario: ")
             salario = input("Digite o salario do funcionario: ")
             ocupacao = input("Digite a ocupação do funcionário: ")
 
@@ -101,7 +104,7 @@ def modulo_funcionario():
             func_create(data)
 
         elif op == '2':
-            cpf = input("Digite o cpf do funcionario: ")
+            cpf = input("Digite o CPF do funcionario: ")
             #Verificar O Cpf Aqui
 
             func_update(cpf)
@@ -113,7 +116,8 @@ def modulo_funcionario():
             func_search()
             
         elif op == '5':
-            cpf = input('Digite o cpf do Funcionario: ')
+            cpf = input('Digite o CPF do Funcionario: ')
+            
             func_delete(cpf)
 
         else:

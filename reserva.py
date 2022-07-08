@@ -49,11 +49,11 @@ def res_create(data):
 def res_update(cpf, apt):
     if apt in reservas:
         if  reservas[apt]['nome'] == hospede[cpf]['nome']:
-            
             newapt = input("Digite o novo número do quarto: ")
 
             reservas[newapt] = reservas[apt]
             reservas[newapt]['valor'] = quartos[newapt]
+
             del reservas[apt]
 
             print("\nReserva atualizada com sucesso")
@@ -65,9 +65,9 @@ def res_update(cpf, apt):
         print('\nQuarto reservado ou inexistente')
 
 def res_read():
-    print("--------------------------------------")
-    print("--------------Reservas----------------")
-    print("--------------------------------------")
+    print("------------------------------------------")
+    print("--------------  Reservas  ----------------")
+    print("------------------------------------------")
 
     for key,value in reservas.items():
         print("Quarto: ", key, "\tValor: ", value['valor'], "\tNome: ", value['nome'])
@@ -78,12 +78,14 @@ def res_search():
     
     if apt in reservas and cpf in hospede:
         print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'],'\nHospede: ', hospede[cpf]['nome'])
+
     else:
         print('\nQuarto não reservado')
     
 def res_delete(reserva):
     if reserva in reservas:
         del reservas[reserva]
+
         print("\nReserva cancelada com sucesso")
 
 def modulo_reserva():
@@ -121,6 +123,7 @@ def modulo_reserva():
         elif op == '2':
             apt = input("Digite o número do quarto atual: ")
             cpf = input("Digite o CPF do hospede: ")
+            
             res_update(cpf, apt)
 
         elif op == '3':
