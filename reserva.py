@@ -3,8 +3,6 @@ from datetime import date
 
 from hospede import hospede
 
-a = hospede['1']['nome']
-
 quartos = {
     "101": 80,
     "102": 80,
@@ -74,10 +72,9 @@ def res_read():
     
 def res_search():
     apt = input("\nDigite o número do quarto: ")
-    cpf = input("Digite o CPF do hospede: ")
     
-    if apt in reservas and cpf in hospede:
-        print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'],'\nHospede: ', hospede[cpf]['nome'])
+    if apt in reservas:
+        print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'],'\nHospede: ', reservas[apt]['nome'])
 
     else:
         print('\nQuarto não reservado')

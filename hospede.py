@@ -38,13 +38,13 @@ def hosp_create(data):
     if data["cpf"] not in hospede:
         hospede[data['cpf']] = {'nome': data['nome'], 'cpf': data['cpf'], 'email': data['email'], 'endereco': data['endereco'], 'telefone': data['telefone']}
 
-        print('\nFuncionario cadastrado com sucesso')
+        print('\nHóspede cadastrado com sucesso')
     else:
         print('\nHóspede já cadastrado')
 
 def hosp_update(cpf):    
     if cpf in hospede:
-        email = input("Digite o email: ")
+        email = input("\nDigite o email: ")
         endereco = input("Digite o endereco: ")
         telefone = input("Digite o telefone: ")
         
@@ -71,7 +71,7 @@ def hosp_read():
             "\nEndereço: ", value['endereco'])
 
 def hosp_search():
-    cpf = input('\nDigite o CPF do Hóspede: ')
+    cpf = input('\nDigite o CPF do Hóspede (Se não souber, tecle ENTER): ')
     name = input('Digite o nome do Hóspede: ')
 
     for key, value in hospede.items():

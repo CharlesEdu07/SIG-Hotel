@@ -19,7 +19,7 @@ while op != '0':
       
     elif op == '4':
         #modulo_check()
-        print("a")
+        print("Em desenvolvimento...")
 
     else:
         print('\nSeleção inválida') 
