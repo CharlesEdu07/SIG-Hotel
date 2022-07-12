@@ -95,7 +95,9 @@ def modulo_hospede():
 
     while op != '0':
         if op == '1':
-            nome = input("Digite o nome do hospede: ")
+            print("\nCADASTRO DE HÓSPEDES")
+
+            nome = input("\nDigite o nome do hospede: ")
             cpf = input("Digite o CPF do hospede: ")
             email = input("Digite o email do hospede: ")
             endereco = input("Digite o endereco do hospede: ")
@@ -112,17 +114,25 @@ def modulo_hospede():
             hosp_create(data)
 
         elif op == '2':
+            print("\nATUALIZAÇÃO DE HÓSPEDES")
+
             cpf = input("\nDigite o CPF do hospede: ")
+
             hosp_update(cpf)
 
         elif op == '3':
+            print("\nCarregando relatório...")
+
             hosp_read()
 
         elif op == '4':
             hosp_search()
             
         elif op == '5':
+            print("\nDELETAR HÓSPEDE")
+
             cpf = input('\nDigite o CPF do hospede: ')
+            
             hosp_delete(cpf)
 
         else:

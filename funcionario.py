@@ -91,6 +91,8 @@ def modulo_funcionario():
 
     while op != '0':
         if op == '1':
+            print('\nCADASTRAR FUNCIONÁRIO')
+
             nome = input("\nDigite o nome do funcionario: ")
             cpf = input("Digite o CPF do funcionario: ")
             salario = input("Digite o salario do funcionario: ")
@@ -106,17 +108,25 @@ def modulo_funcionario():
             func_create(data)
 
         elif op == '2':
+            print('\nATUALIZAR FUNCIONÁRIO')
+
             cpf = input("\nDigite o CPF do funcionario: ")
 
             func_update(cpf)
 
         elif op == '3':
+            print('\nLISTAR FUNCIONÁRIO')
+
             func_read()
 
         elif op == '4':
+            print('\nPESQUISAR FUNCIONÁRIO')
+
             func_search()
             
         elif op == '5':
+            print('\nDELETAR FUNCIONÁRIO')
+
             cpf = input('\nDigite o CPF do Funcionario: ')
 
             func_delete(cpf)

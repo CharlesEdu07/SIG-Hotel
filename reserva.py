@@ -137,6 +137,8 @@ def modulo_reserva():
                 print('\nValores inválidos')
 
         elif op == '2':
+            print("\nATUALIZAR RESERVA")
+
             apt = input("\nDigite o número do quarto atual: ")
             cpf = input("Digite o CPF do hospede: ")
 
@@ -146,9 +148,13 @@ def modulo_reserva():
             res_read()
 
         elif op == '4':
+            print("\nPESQUISAR RESERVA")
+
             res_search()
             
         elif op == '5':
+            print("\nDELETAR RESERVA")
+
             res = input('\nDigite a reserva a ser deletada: ')
 
             res_delete(res)

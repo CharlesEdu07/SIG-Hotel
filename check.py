@@ -72,6 +72,8 @@ def modulo_check():
 
     while op != '0':
         if op == '1':
+            print()
+
             res_read()
 
             cpf = input("\nDigite o CPF: ")
@@ -88,6 +90,8 @@ def modulo_check():
                 print("\nReserva não encontrada")
 
         elif op == '2':
+            print("\nCHECK-OUT")
+
             cpf = input("\nDigite o CPF: ")
             apt = input("Digite o número do quarto: ")
 
