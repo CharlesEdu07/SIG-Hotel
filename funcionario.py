@@ -54,8 +54,8 @@ def func_read():
         "\nOcupacao: ", value['ocupacao'])
 
 def func_search():
-    cpf = input('\nDigite o CPF do Funcionario (Se não souber, tecle ENTER): ')
-    name = input('Digite o nome do Funcionario: ')
+    cpf = input('\nDigite o CPF do funcionario (Se não souber, tecle ENTER): ')
+    name = input('Digite o nome do funcionario: ')
 
     for key, value in funcionario.items():
         if key == cpf or value['nome'] == name:

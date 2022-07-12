@@ -37,7 +37,11 @@ def menu_reserva():
 
 def res_create(data):
     if data['apt'] not in reservas:
-        reservas[data['apt']] = {'apt': data['apt'], 'is_ocupado': data['is_ocupado'], 'is_reservado': data['is_reservado'], 'nome': data['nome'], 'valor': data['valor']}
+        reservas[data['apt']] = {'apt': data['apt'],
+        'is_ocupado': data['is_ocupado'],
+        'cpf':data['cpf'],
+        'nome': data['nome'],
+        'valor': data['valor']}
         
         print('\nReserva cadastrada com sucesso')
 
@@ -79,7 +83,13 @@ def res_search():
     apt = input("\nDigite o número do quarto: ")
     
     if apt in reservas:
-        print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'],'\nHospede: ', reservas[apt]['nome'])
+        print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'], '\nHospede: ', reservas[apt]['nome'])
+        
+        if reservas[apt]['is_ocupado'] == True :
+            print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'], '\nHospede: ', reservas[apt]['nome'], "\tData de entrada: ", reservas[apt]['data_entrada'])
+
+        elif reservas[apt]['is_ocupado'] == False:
+            print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'], '\nHospede: ', reservas[apt]['nome'], "\tData de saida: ", reservas[apt]['data_saida'])
 
     else:
         print('\nQuarto não reservado')
@@ -112,9 +122,9 @@ def modulo_reserva():
                 if apt in quartos:
                     data = {
                         "apt": apt,
-                        "is_ocupado": False,
+                        "is_ocupado": "",
                         "is_reservado": True,
-                        "cpf": hospede[cpf],
+                        "cpf": hospede[cpf]['cpf'],
                         "nome": hospede[cpf]['nome'],
                         "valor":quartos[apt]
                     }
