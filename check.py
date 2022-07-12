@@ -1,4 +1,6 @@
 import os
+from reserva import res_read, reservas
+from hospede import hospede
 
 def menu_check():
     os.system('cls')
@@ -13,3 +15,31 @@ def menu_check():
     op = input("\nDigite a opção: ")
 
     return op
+
+def check_in(cpf):
+    pass
+
+def check_out():
+    pass
+
+def modulo_check():
+    op = menu_check()
+
+    while op != '0':
+        if op == '1':
+            res_read()
+
+            cpf = input("\nDigite o CPF para fazer check-in: ")
+
+            check_in(cpf)
+
+        elif op == '2':
+            check_out()
+
+        else:
+            print('\nSeleção inválida')
+
+        print()
+        input('Tecle ENTER para continuar')
+
+        op = menu_check()

@@ -4,6 +4,8 @@ from main_menu import *
 from hospede import *
 from funcionario import *
 from reserva import *
+from sobre import *
+from check import *
 
 op = menu_main()
 
@@ -18,8 +20,10 @@ while op != '0':
         modulo_reserva()
       
     elif op == '4':
-        #modulo_check()
-        print("Em desenvolvimento...")
+        modulo_check()
+
+    elif op == '5':
+        sobre()
 
     else:
         print('\nSeleção inválida') 

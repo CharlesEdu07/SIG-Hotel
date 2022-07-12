@@ -63,12 +63,17 @@ def res_update(cpf, apt):
         print('\nQuarto reservado ou inexistente')
 
 def res_read():
-    print("------------------------------------------")
-    print("--------------  Reservas  ----------------")
-    print("------------------------------------------")
+    if reservas != {}:
+        print()
+        print("------------------------------------------")
+        print("--------------  Reservas  ----------------")
+        print("------------------------------------------")
 
-    for key,value in reservas.items():
-        print("Quarto: ", key, "\tValor: ", value['valor'], "\tNome: ", value['nome'])
+        for key,value in reservas.items():
+            print("Quarto: ", key, "\tValor: ", value['valor'], "\tNome: ", value['nome'])
+
+    else:
+        print('\nNão existem reservas feitas')
     
 def res_search():
     apt = input("\nDigite o número do quarto: ")
