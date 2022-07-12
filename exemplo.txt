@@ -14,7 +14,15 @@ reservas = {
         "hospede": hospede['cpf']
         tentar dizer qual hospede está no quarto
     }
+    
+    "apt":{
+        adasda
+        dasdaads
+        daadsqas
+    }
 }
+
+reserva = {'apt': [lista de dados]}
 
 
 func ={ 

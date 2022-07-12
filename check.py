@@ -26,7 +26,7 @@ def check_in(apt):
         reservas[apt].update({'data_entrada': data_entrada})
         reservas[apt]['is_ocupado'] = True
 
-        print("Check-in feito com sucesso. O quarto está agora ocupado")
+        print("\nCheck-in feito com sucesso. O quarto está agora ocupado")
 
     else :
         print("\nQuarto ocupado")
@@ -55,14 +55,14 @@ def check_out(apt):
         else:
             print("\nValor da hospedagem: R$", reservas[apt]['valor']) 
         
-        res = input('Deseja realmente finalizar a reserva? (S/N)')
+        res = input('\nDeseja realmente finalizar a reserva? (S/N): ')
 
         if(res.upper() == 'S'):
             del reservas[apt]
-            print('Reserva Finalizada')
+            print('\nReserva Finalizada')
 
         else:
-            print('Reserva não finalizada')
+            print('\nReserva não finalizada')
            
     else:
         print("\nQuarto não ocupado")

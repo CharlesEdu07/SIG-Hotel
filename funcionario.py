@@ -107,7 +107,6 @@ def modulo_funcionario():
 
         elif op == '2':
             cpf = input("\nDigite o CPF do funcionario: ")
-            #Verificar O Cpf Aqui
 
             func_update(cpf)
 

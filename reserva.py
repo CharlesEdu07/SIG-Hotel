@@ -51,7 +51,7 @@ def res_create(data):
 def res_update(cpf, apt):
     if apt in reservas:
         if  reservas[apt]['nome'] == hospede[cpf]['nome']:
-            newapt = input("Digite o novo número do quarto: ")
+            newapt = input("\nDigite o novo número do quarto: ")
 
             reservas[newapt] = reservas[apt]
             reservas[newapt]['valor'] = quartos[newapt]
