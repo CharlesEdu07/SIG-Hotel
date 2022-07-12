@@ -16,7 +16,7 @@ def menu_check():
 
     return op
 
-def check_in(cpf):
+def check_in():
     pass
 
 def check_out():
@@ -29,9 +29,15 @@ def modulo_check():
         if op == '1':
             res_read()
 
-            cpf = input("\nDigite o CPF para fazer check-in: ")
+            '''cpf = input("\nDigite o CPF para fazer check-in: ")
 
-            check_in(cpf)
+            print(reservas)
+
+            if cpf in reservas:
+                check_in(cpf)
+
+            else:
+                print("Reserva não encontrada")'''
 
         elif op == '2':
             check_out()

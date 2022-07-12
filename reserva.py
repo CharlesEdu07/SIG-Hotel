@@ -42,7 +42,7 @@ def res_create(data):
         print('\nReserva cadastrada com sucesso')
 
     else:
-        print('\nJa existe uma reserva para este quarto')
+        print('\nVocê já fez uma reserva ou já existe uma reserva para este quarto')
 
 def res_update(cpf, apt):
     if apt in reservas:
@@ -65,9 +65,9 @@ def res_update(cpf, apt):
 def res_read():
     if reservas != {}:
         print()
-        print("------------------------------------------")
-        print("--------------  Reservas  ----------------")
-        print("------------------------------------------")
+        print("--------------------------------------------")
+        print("---------------  Reservas  -----------------")
+        print("--------------------------------------------")
 
         for key,value in reservas.items():
             print("Quarto: ", key, "\tValor: ", value['valor'], "\tNome: ", value['nome'])
@@ -114,6 +114,7 @@ def modulo_reserva():
                         "apt": apt,
                         "is_ocupado": False,
                         "is_reservado": True,
+                        "cpf": hospede[cpf],
                         "nome": hospede[cpf]['nome'],
                         "valor":quartos[apt]
                     }
@@ -123,7 +124,7 @@ def modulo_reserva():
                 else:
                     print('\nQuarto não disponível ou inexistente')
             else:
-                print('\nHospede não cadastrado')
+                print('\nValores inválidos')
 
         elif op == '2':
             apt = input("\nDigite o número do quarto atual: ")
