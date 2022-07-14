@@ -86,6 +86,21 @@ def func_delete(cpf):
     else:
         print('\nFuncionario não encontrado')
 
+def func_read_data():
+    nome = input("\nDigite o nome do funcionario: ")
+    cpf = input("Digite o CPF do funcionario: ")
+    salario = input("Digite o salario do funcionario: ")
+    ocupacao = input("Digite a ocupação do funcionário: ")
+
+    data = {
+        "nome": nome,
+        "cpf": cpf,
+        "salario": salario,
+        "ocupacao": ocupacao
+    }
+            
+    func_create(data)
+
 def modulo_funcionario():
     op = menu_funcionario()
 
@@ -93,19 +108,7 @@ def modulo_funcionario():
         if op == '1':
             print('\nCADASTRAR FUNCIONÁRIO')
 
-            nome = input("\nDigite o nome do funcionario: ")
-            cpf = input("Digite o CPF do funcionario: ")
-            salario = input("Digite o salario do funcionario: ")
-            ocupacao = input("Digite a ocupação do funcionário: ")
-
-            data = {
-                "nome": nome,
-                "cpf": cpf,
-                "salario": salario,
-                "ocupacao": ocupacao
-            }
-            
-            func_create(data)
+            func_read_data()
 
         elif op == '2':
             print('\nATUALIZAR FUNCIONÁRIO')

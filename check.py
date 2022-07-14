@@ -67,6 +67,24 @@ def check_out(apt):
     else:
         print("\nQuarto não ocupado")
 
+def check_read_data(code):
+    cpf = input("\nDigite o CPF: ")
+    apt = input("Digite o número do quarto: ")
+            
+    if apt in reservas:
+        if cpf in reservas[apt]['cpf']:
+            if code == '1':
+                check_in(apt)
+
+            else:
+                check_out(apt)
+
+        else:
+            print('\nCPF não vinculado ao quarto')
+                    
+    else:
+        print("\nReserva não encontrada")
+
 def modulo_check():
     op = menu_check()
 
@@ -76,34 +94,12 @@ def modulo_check():
 
             res_read()
 
-            cpf = input("\nDigite o CPF: ")
-            apt = input("Digite o número do quarto: ")
-            
-            if apt in reservas:
-                if cpf in reservas[apt]['cpf']:
-                    check_in(apt)
-
-                else:
-                    print('\nCPF não vinculado ao quarto')
-                    
-            else:
-                print("\nReserva não encontrada")
+            check_read_data('1')
 
         elif op == '2':
             print("\nCHECK-OUT")
 
-            cpf = input("\nDigite o CPF: ")
-            apt = input("Digite o número do quarto: ")
-
-            if apt in reservas:
-                if cpf in reservas[apt]['cpf']:
-                    check_out(apt)
-
-                else:
-                    print('CPF não cadastrado')
-
-        else:
-            print('\nSeleção inválida')
+            check_read_data('2')
 
         print()
         input('Tecle ENTER para continuar')

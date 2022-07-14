@@ -90,6 +90,23 @@ def hosp_delete(cpf):
     else:
         print('\nHóspede não encontrado')
 
+def hosp_read_data():
+    nome = input("\nDigite o nome do hospede: ")
+    cpf = input("Digite o CPF do hospede: ")
+    email = input("Digite o email do hospede: ")
+    endereco = input("Digite o endereco do hospede: ")
+    telefone = input("Digite o telefone do hospede: ")
+
+    data = {
+        "nome": nome,
+        "cpf": cpf,
+        "email": email,
+        "endereco": endereco,
+        "telefone": telefone
+    }
+
+    hosp_create(data)
+
 def modulo_hospede():
     op = menu_hospede()
 
@@ -97,21 +114,7 @@ def modulo_hospede():
         if op == '1':
             print("\nCADASTRO DE HÓSPEDES")
 
-            nome = input("\nDigite o nome do hospede: ")
-            cpf = input("Digite o CPF do hospede: ")
-            email = input("Digite o email do hospede: ")
-            endereco = input("Digite o endereco do hospede: ")
-            telefone = input("Digite o telefone do hospede: ")
-
-            data = {
-                "nome": nome,
-                "cpf": cpf,
-                "email": email,
-                "endereco": endereco,
-                "telefone": telefone
-            }
-            
-            hosp_create(data)
+            hosp_read_data()
 
         elif op == '2':
             print("\nATUALIZAÇÃO DE HÓSPEDES")

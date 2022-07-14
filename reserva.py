@@ -103,6 +103,34 @@ def res_delete(reserva):
     else:
         print('\nReserva não existe')
 
+def show_quartos():
+    print("--------------- Quartos ----------------")
+    for i in quartos:
+        print("Quarto: ",i,"\tValor: ", quartos[i])
+    print("----------------------------------------")
+
+def res_read_data():
+    apt = input("\nDigite o número do quarto: ")
+    cpf = input("Digite o CPF do hospede: ")
+            
+    if cpf in hospede:
+        if apt in quartos:
+            data = {
+                "apt": apt,
+                "is_ocupado": "",
+                "is_reservado": True,
+                "cpf": hospede[cpf]['cpf'],
+                "nome": hospede[cpf]['nome'],
+                "valor":quartos[apt]
+            }
+                    
+            res_create(data)
+                
+        else:
+            print('\nQuarto não disponível ou inexistente')
+    else:
+        print('\nValores inválidos')
+
 def modulo_reserva():
     op = menu_reserva()
 
@@ -110,31 +138,9 @@ def modulo_reserva():
         if op == '1':
             print("\nEscolha o quarto: ")
             
-            print("--------------- Quartos ----------------")
-            for i in quartos:
-                print("Quarto: ",i,"\tValor: ", quartos[i])
-            print("----------------------------------------")
+            show_quartos()
                 
-            apt = input("\nDigite o número do quarto: ")
-            cpf = input("Digite o CPF do hospede: ")
-            
-            if cpf in hospede:
-                if apt in quartos:
-                    data = {
-                        "apt": apt,
-                        "is_ocupado": "",
-                        "is_reservado": True,
-                        "cpf": hospede[cpf]['cpf'],
-                        "nome": hospede[cpf]['nome'],
-                        "valor":quartos[apt]
-                    }
-                    
-                    res_create(data)
-                
-                else:
-                    print('\nQuarto não disponível ou inexistente')
-            else:
-                print('\nValores inválidos')
+            res_read_data()
 
         elif op == '2':
             print("\nATUALIZAR RESERVA")
