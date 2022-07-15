@@ -1,7 +1,9 @@
 import os
+import pickle
 from datetime import date
 
-from hospede import hospede
+from numpy import empty
+from hospede import hospede, hosp_load_file, hosp_write_file
 
 quartos = {
     "101": 80,
@@ -14,9 +16,7 @@ quartos = {
     "108": 250
 }
 
-reservas = {
-  
-}
+reservas = {}
 
 def menu_reserva():
     os.system('cls')
@@ -34,6 +34,22 @@ def menu_reserva():
     op = input("\nDigite a opção: ")
 
     return op
+
+def res_write_file():  
+    with open('reserva.dat', 'wb') as f: 
+        pickle.dump(reservas, f)
+            
+def res_load_file():
+    ld_reserva = {}
+
+    try:
+        with open('reserva.dat', 'rb') as f:
+            ld_reserva = pickle.load(f)
+
+    except:
+        print()
+
+    return ld_reserva
 
 def res_create(data):
     if data['apt'] not in reservas:
@@ -83,12 +99,14 @@ def res_search():
     apt = input("\nDigite o número do quarto: ")
     
     if apt in reservas:
+        print(reservas[apt]['is_ocupado'])
+
         print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'], '\nHospede: ', reservas[apt]['nome'])
         
-        if reservas[apt]['is_ocupado'] == True :
+        if reservas[apt]['is_ocupado'] == "sim" :
             print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'], '\nHospede: ', reservas[apt]['nome'], "\tData de entrada: ", reservas[apt]['data_entrada'])
 
-        elif reservas[apt]['is_ocupado'] == False:
+        elif reservas[apt]['is_ocupado'] == "nao":
             print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'], '\nHospede: ', reservas[apt]['nome'], "\tData de saida: ", reservas[apt]['data_saida'])
 
     else:
@@ -117,11 +135,11 @@ def res_read_data():
         if apt in quartos:
             data = {
                 "apt": apt,
-                "is_ocupado": "",
+                "is_ocupado": "vazio",
                 "is_reservado": True,
                 "cpf": hospede[cpf]['cpf'],
                 "nome": hospede[cpf]['nome'],
-                "valor":quartos[apt]
+                "valor": quartos[apt]
             }
                     
             res_create(data)
@@ -133,6 +151,12 @@ def res_read_data():
 
 def modulo_reserva():
     op = menu_reserva()
+
+    global hospede
+    hospede = hosp_load_file()
+
+    global reservas
+    reservas = res_load_file()
 
     while op != '0':
         if op == '1':
@@ -167,6 +191,9 @@ def modulo_reserva():
 
         else:
             print('\nSeleção inválida') 
+
+        res_write_file()
+        hosp_write_file()
 
         print()
         input('Tecle ENTER para continuar')

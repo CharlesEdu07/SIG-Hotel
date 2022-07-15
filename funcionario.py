@@ -1,19 +1,7 @@
 import os
+import pickle
 
-funcionario = {
-    "1": {
-        "nome": "João",
-        "cpf": "1",
-        "salario": 1000,
-        "ocupacao": "Gerente"
-    },
-    "2": {
-        "nome": "Maria",
-        "cpf": "2",
-        "salario": 2000,
-        "ocupacao": "Gerente"
-    }
-}
+funcionario = {}
 
 def menu_funcionario():
     os.system('cls')
@@ -32,10 +20,26 @@ def menu_funcionario():
 
     return op
 
+def func_write_file():  
+    with open('funcionario.dat', 'wb') as f: 
+        pickle.dump(funcionario, f)
+            
+def func_load_file():
+    ld_funcionario = {}
+
+    try:
+        with open('funcionario.dat', 'rb') as f:
+            ld_funcionario = pickle.load(f)
+
+    except:
+        print()
+
+    return ld_funcionario
+
 def func_create(data):
     if data['cpf'] not in funcionario:
         funcionario[data['cpf']] = {'nome': data['nome'], 'cpf': data['cpf'], 'salario': data['salario'], 'ocupacao': data['ocupacao']}
-        
+
         print('\nFuncionario cadastrado com sucesso')
 
     else:
@@ -56,6 +60,8 @@ def func_read():
 def func_search():
     cpf = input('\nDigite o CPF do funcionario (Se não souber, tecle ENTER): ')
     name = input('Digite o nome do funcionario: ')
+
+    print()
 
     for key, value in funcionario.items():
         if key == cpf or value['nome'] == name:
@@ -104,6 +110,9 @@ def func_read_data():
 def modulo_funcionario():
     op = menu_funcionario()
 
+    global funcionario
+    funcionario =  func_load_file()
+    
     while op != '0':
         if op == '1':
             print('\nCADASTRAR FUNCIONÁRIO')
@@ -137,6 +146,8 @@ def modulo_funcionario():
         else:
             print('\nSeleção inválida') 
 
+        func_write_file()
+        
         print()
         input('Tecle ENTER para continuar')
 

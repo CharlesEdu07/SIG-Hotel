@@ -1,6 +1,5 @@
-from genericpath import exists
 import os
-from reserva import res_read, reservas
+from reserva import res_read, reservas, res_write_file, res_load_file
 from hospede import hospede
 from datetime import datetime
 
@@ -19,25 +18,24 @@ def menu_check():
     return op
 
 def check_in(apt):
-    if reservas[apt]['is_ocupado'] == "":
+    if reservas[apt]['is_ocupado'] == "vazio":
         data_entrada = datetime.now()
         data_entrada = data_entrada.strftime("%d/%m/%Y")
         
         reservas[apt].update({'data_entrada': data_entrada})
-        reservas[apt]['is_ocupado'] = True
-
+        reservas[apt].update({'is_ocupado': "sim"})
         print("\nCheck-in feito com sucesso. O quarto está agora ocupado")
 
     else :
         print("\nQuarto ocupado")
 
 def check_out(apt):
-    if  reservas[apt]['is_ocupado'] == True:
+    if  reservas[apt]['is_ocupado'] == 'sim':
         data_saida = datetime.now()
         data_saida = data_saida.strftime("%d/%m/%Y")
 
         reservas[apt].update({'data_saida': data_saida})
-        reservas[apt]['is_ocupado'] = False
+        reservas[apt]['is_ocupado'] = 'nao'
 
         d1_aux = (reservas[apt]['data_saida'])
         d2_aux = (reservas[apt]['data_entrada'])
@@ -57,7 +55,7 @@ def check_out(apt):
         
         res = input('\nDeseja realmente finalizar a reserva? (S/N): ')
 
-        if(res.upper() == 'S'):
+        if res.upper() == 'S':
             del reservas[apt]
             print('\nReserva Finalizada')
 
@@ -88,6 +86,9 @@ def check_read_data(code):
 def modulo_check():
     op = menu_check()
 
+    global reservas
+    reservas = res_load_file()
+
     while op != '0':
         if op == '1':
             print()
@@ -100,6 +101,11 @@ def modulo_check():
             print("\nCHECK-OUT")
 
             check_read_data('2')
+
+        else:
+            print("Seleção inválida")
+
+        res_write_file()
 
         print()
         input('Tecle ENTER para continuar')

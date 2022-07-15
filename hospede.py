@@ -1,21 +1,7 @@
 import os
+import pickle
 
-hospede = {
-     "1": {
-        "nome": "João",
-        "cpf": "1",
-        "email": "dasdasd",
-        "endereco": "asdasd",
-        "telefone": "asdasd"
-    },
-    "2": {
-        "nome": "Maria",
-        "cpf": "2",
-        "email": "dasdasd",
-        "endereco": "asdasd",
-        "telefone": "asdasd"
-    }
-}
+hospede = {}
 
 def menu_hospede():
     os.system('cls')
@@ -33,6 +19,22 @@ def menu_hospede():
     op = input("\nDigite a opção: ")
 
     return op
+
+def hosp_write_file():  
+    with open('hospede.dat', 'wb') as f: 
+        pickle.dump(hospede, f)
+            
+def hosp_load_file():
+    ld_hospede = {}
+
+    try:
+        with open('hospede.dat', 'rb') as f:
+            ld_hospede = pickle.load(f)
+
+    except:
+        print()
+
+    return ld_hospede
 
 def hosp_create(data):
     if data["cpf"] not in hospede:
@@ -110,6 +112,9 @@ def hosp_read_data():
 def modulo_hospede():
     op = menu_hospede()
 
+    global hospede
+    hospede = hosp_load_file()
+
     while op != '0':
         if op == '1':
             print("\nCADASTRO DE HÓSPEDES")
@@ -140,8 +145,11 @@ def modulo_hospede():
 
         else:
             print('\nSeleção inválida') 
+        
+        hosp_write_file()
 
         print()
         input('Tecle ENTER para continuar')
 
+        
         op = menu_hospede()
