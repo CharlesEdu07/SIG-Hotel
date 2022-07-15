@@ -36,18 +36,29 @@ def menu_reserva():
     return op
 
 def res_write_file():  
-    with open('reserva.dat', 'wb') as f: 
-        pickle.dump(reservas, f)
+    '''with open('reserva.dat', 'wb') as f: 
+        pickle.dump(reservas, f)'''
+
+    arq_reserva = open("reserva.dat", "wb")
+
+    pickle.dump(reservas, arq_reserva)
+
+    arq_reserva.close()
             
 def res_load_file():
     ld_reserva = {}
 
     try:
-        with open('reserva.dat', 'rb') as f:
-            ld_reserva = pickle.load(f)
+        '''with open('reserva.dat', 'rb') as f:
+            ld_reserva = pickle.load(f)'''
+
+        arq_reserva = open("reserva.dat", "rb")
+        ld_reserva = pickle.load(arq_reserva)
+        arq_reserva.close()
 
     except:
-        print()
+        arq_reserva = open("reserva.dat", "wb")
+        arq_reserva.close()
 
     return ld_reserva
 

@@ -24,6 +24,7 @@ def check_in(apt):
         
         reservas[apt].update({'data_entrada': data_entrada})
         reservas[apt].update({'is_ocupado': "sim"})
+
         print("\nCheck-in feito com sucesso. O quarto está agora ocupado")
 
     else :

@@ -21,18 +21,26 @@ def menu_hospede():
     return op
 
 def hosp_write_file():  
-    with open('hospede.dat', 'wb') as f: 
-        pickle.dump(hospede, f)
+    arq_hospede = open("hospede.dat", "wb")
+
+    pickle.dump(hospede, arq_hospede)
+
+    arq_hospede.close()
             
 def hosp_load_file():
     ld_hospede = {}
 
     try:
-        with open('hospede.dat', 'rb') as f:
-            ld_hospede = pickle.load(f)
+        '''with open('hospede.dat', 'rb') as f:
+            ld_hospede = pickle.load(f)'''
+
+        arq_hospede = open("hospede.dat", "rb")
+        ld_hospede = pickle.load(arq_hospede)
+        arq_hospede.close()
 
     except:
-        print()
+        arq_hospede = open("hospede.dat", "wb")
+        arq_hospede.close()
 
     return ld_hospede
 

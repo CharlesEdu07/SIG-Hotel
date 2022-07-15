@@ -21,18 +21,29 @@ def menu_funcionario():
     return op
 
 def func_write_file():  
-    with open('funcionario.dat', 'wb') as f: 
-        pickle.dump(funcionario, f)
+    '''with open('funcionario.dat', 'wb') as f: 
+        pickle.dump(funcionario, f)'''
+
+    arq_funcionario = open("funcionario.dat", "wb")
+
+    pickle.dump(funcionario, arq_funcionario)
+
+    arq_funcionario.close()
             
 def func_load_file():
     ld_funcionario = {}
 
     try:
-        with open('funcionario.dat', 'rb') as f:
-            ld_funcionario = pickle.load(f)
+        '''with open('funcionario.dat', 'rb') as f:
+            ld_funcionario = pickle.load(f)'''
+
+        arq_funcionario = open("funcionario.dat", "rb")
+        ld_funcionario = pickle.load(arq_funcionario)
+        arq_funcionario.close()
 
     except:
-        print()
+        arq_funcionario = open("funcionario.dat", "wb")
+        arq_funcionario.close()
 
     return ld_funcionario
 
