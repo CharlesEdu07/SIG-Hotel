@@ -1,5 +1,6 @@
 import os
-from reserva import res_read, reservas, res_write_file, res_load_file
+import pickle
+from reserva import res_read, reservas, res_load_file
 from hospede import hospede
 from datetime import datetime
 
@@ -17,13 +18,38 @@ def menu_check():
 
     return op
 
+def res_write_file():
+    '''with open('reserva.dat', 'wb') as f: 
+        pickle.dump(reservas, f)'''
+
+    arq_reserva = open("reserva.dat", "wb")
+
+    print(reservas)
+    print('res_write_file')
+
+    pickle.dump(reservas, arq_reserva)
+
+    arq_reserva.close()
+
 def check_in(apt):
     if reservas[apt]['is_ocupado'] == "vazio":
         data_entrada = datetime.now()
         data_entrada = data_entrada.strftime("%d/%m/%Y")
-        
-        reservas[apt].update({'data_entrada': data_entrada})
-        reservas[apt].update({'is_ocupado': "sim"})
+
+        '''reservas[apt].update({'data_entrada': data_entrada})
+        reservas[apt].update({'is_ocupado': "sim"})'''
+    
+        '''reservas.update({apt: reservas[apt]})'''
+
+        reservas[apt] = {
+            **reservas[apt],
+            'data_entrada': data_entrada,
+            'is_ocupado': "sim"
+        }
+
+        # https://sparrow.dev/object-spread-operator-python/
+
+        print(reservas)
 
         print("\nCheck-in feito com sucesso. O quarto está agora ocupado")
 

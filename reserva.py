@@ -41,6 +41,9 @@ def res_write_file():
 
     arq_reserva = open("reserva.dat", "wb")
 
+    print(reservas)
+    print('res_write_file')
+
     pickle.dump(reservas, arq_reserva)
 
     arq_reserva.close()
@@ -80,8 +83,11 @@ def res_update(cpf, apt):
         if  reservas[apt]['nome'] == hospede[cpf]['nome']:
             newapt = input("\nDigite o novo número do quarto: ")
 
-            reservas[newapt] = reservas[apt]
-            reservas[newapt]['valor'] = quartos[newapt]
+            reservas[newapt] = {
+                **reservas[apt],
+                'valor': quartos[newapt],
+                'apt': newapt
+            }
 
             del reservas[apt]
 
@@ -110,6 +116,7 @@ def res_search():
     apt = input("\nDigite o número do quarto: ")
     
     if apt in reservas:
+        print(reservas)
         print(reservas[apt]['is_ocupado'])
 
         print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'], '\nHospede: ', reservas[apt]['nome'])
