@@ -1,6 +1,6 @@
 import os
 import pickle
-from hospede import hospede, hosp_load_file, hosp_write_file
+from hospede import hospede, hosp_read, hosp_load_file, hosp_write_file
 
 quartos = {
     "101": 80,
@@ -99,8 +99,12 @@ def res_read():
         for key,value in reservas.items():
             print("Quarto: ", key, "\tValor: ", value['valor'], "\tNome: ", value['nome'])
 
+        return True
+
     else:
         print('\nNão existem reservas feitas')
+
+        return False
     
 def res_search():
     apt = input("\nDigite o número do quarto: ")
@@ -134,7 +138,12 @@ def show_quartos():
 
 def res_read_data():
     apt = input("\nDigite o número do quarto: ")
-    cpf = input("Digite o CPF do hospede: ")
+    
+    os.system('cls')
+
+    hosp_read()
+
+    cpf = input("\nDigite o CPF do hospede: ")
             
     if cpf in hospede:
         if apt in quartos:
@@ -165,6 +174,8 @@ def modulo_reserva():
 
     while op != '0':
         if op == '1':
+            os.system('cls')
+
             print("\nEscolha o quarto: ")
             
             show_quartos()
@@ -172,6 +183,8 @@ def modulo_reserva():
             res_read_data()
 
         elif op == '2':
+            os.system('cls')
+
             print("\nATUALIZAR RESERVA")
 
             apt = input("\nDigite o número do quarto atual: ")
@@ -180,14 +193,20 @@ def modulo_reserva():
             res_update(cpf, apt)
 
         elif op == '3':
+            os.system('cls')
+
             res_read()
 
         elif op == '4':
+            os.system('cls')
+
             print("\nPESQUISAR RESERVA")
 
             res_search()
             
         elif op == '5':
+            os.system('cls')
+
             print("\nDELETAR RESERVA")
 
             res = input('\nDigite a reserva a ser deletada: ')

@@ -1,5 +1,6 @@
 import os
 import pickle
+from verificar import *
 
 hospede = {}
 
@@ -54,6 +55,10 @@ def hosp_update(cpf):
         email = input("\nDigite o email: ")
         endereco = input("Digite o endereco: ")
         telefone = input("Digite o telefone: ")
+
+        while not(valida_telefone(telefone)):
+            print("\nTelefone inválido. Digite novamente")
+            telefone = input("\nDigite o telefone: ")
         
         hospede[cpf]['email'] = email
         hospede[cpf]['endereco'] = endereco
@@ -65,6 +70,8 @@ def hosp_update(cpf):
         print('\nHóspede não encontrado')
 
 def hosp_read():
+    os.system('cls')
+
     print()
     print("---------------------------------------")
     print("-------- Relatório de Hóspedes --------")
@@ -78,11 +85,13 @@ def hosp_read():
             "\nEndereço: ", value['endereco'])
 
 def hosp_search():
-    cpf = input('\nDigite o CPF do Hóspede (Se não souber, tecle ENTER): ')
-    name = input('Digite o nome do Hóspede: ')
+    cpf = input('\nDigite o CPF do hóspede (Se não souber, tecle ENTER): ')
+    name = input('Digite o nome do hóspede: ')
+
+    print()
 
     for key, value in hospede.items():
-        if key == cpf or value['nome'] == name:
+        if key == cpf or value['nome'] == name.capitalize():
             print("Nome: ", value['nome'], "\tCPF: ", value['cpf'], "\tTelefone: ", value['telefone'], "\tEmail: ", value['email'], "\tEndereço: ", value['endereco'])
             return
 
@@ -100,15 +109,24 @@ def hosp_delete(cpf):
 def hosp_read_data():
     nome = input("\nDigite o nome do hospede: ")
     cpf = input("Digite o CPF do hospede: ")
+
+    while not(validaCPF(cpf)):
+        print("\nCPF inválido. Digite novamente")
+        cpf = input("\nDigite o CPF do hospede: ")
+
     email = input("Digite o email do hospede: ")
     endereco = input("Digite o endereco do hospede: ")
     telefone = input("Digite o telefone do hospede: ")
 
+    while not(valida_telefone(telefone)):
+        print("\nTelefone inválido. Digite novamente")
+        telefone = input("\nDigite o telefone do hospede: ")
+
     data = {
-        "nome": nome,
+        "nome": nome.capitalize(),
         "cpf": cpf,
         "email": email,
-        "endereco": endereco,
+        "endereco": endereco.capitalize(),
         "telefone": telefone
     }
 
@@ -122,27 +140,43 @@ def modulo_hospede():
 
     while op != '0':
         if op == '1':
+            os.system('cls')
+
             print("\nCADASTRO DE HÓSPEDES")
 
             hosp_read_data()
 
         elif op == '2':
+            os.system('cls')
+
             print("\nATUALIZAÇÃO DE HÓSPEDES")
+
+            hosp_read()
 
             cpf = input("\nDigite o CPF do hospede: ")
 
             hosp_update(cpf)
 
         elif op == '3':
+            os.system('cls')
+
             print("\nCarregando relatório...")
 
             hosp_read()
 
         elif op == '4':
+            os.system('cls')
+
+            print("PESQUISA DE HÓSPEDES")
+
             hosp_search()
             
         elif op == '5':
+            os.system('cls')
+
             print("\nDELETAR HÓSPEDE")
+
+            hosp_read()
 
             cpf = input('\nDigite o CPF do hospede: ')
             

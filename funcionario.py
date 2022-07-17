@@ -1,5 +1,6 @@
 import os
 import pickle
+from verificar import *
 
 funcionario = {}
 
@@ -69,7 +70,7 @@ def func_search():
     print()
 
     for key, value in funcionario.items():
-        if key == cpf or value['nome'] == name:
+        if key == cpf or value['nome'] == name.capitalize():
             print("Nome: ", value['nome'], "\tCPF: ", value['cpf'], "\tSalario: ", value['salario'], "\tOcupacao: ", value['ocupacao'])
             return
 
@@ -78,10 +79,15 @@ def func_search():
 def func_update(cpf):
     if cpf in funcionario:
         salario = input("Digite o novo salario do funcionario: ")
+
+        while not(valida_salario(salario)):
+            print("\nSalario inválido. Digite novamente")
+            salario = input("\nDigite o salario do funcionario: ")
+
         ocupacao = input("Digite a nova ocupação do funcionário: ")
         
         funcionario[cpf]["salario"] = salario
-        funcionario[cpf]["ocupacao"] = ocupacao
+        funcionario[cpf]["ocupacao"] = ocupacao.capitalize()
 
         print('\nFuncionario atualizado com sucesso')
 
@@ -100,14 +106,24 @@ def func_delete(cpf):
 def func_read_data():
     nome = input("\nDigite o nome do funcionario: ")
     cpf = input("Digite o CPF do funcionario: ")
+
+    while not(validaCPF(cpf)):
+        print("\nCPF inválido. Digite novamente")
+        cpf = input("\nDigite o CPF do funcionario: ")
+
     salario = input("Digite o salario do funcionario: ")
+
+    while not(valida_salario(salario)):
+        print("\nSalario inválido. Digite novamente")
+        salario = input("\nDigite o salario do funcionario: ")
+
     ocupacao = input("Digite a ocupação do funcionário: ")
 
     data = {
-        "nome": nome,
+        "nome": nome.capitalize(),
         "cpf": cpf,
         "salario": salario,
-        "ocupacao": ocupacao
+        "ocupacao": ocupacao.capitalize()
     }
             
     func_create(data)
@@ -120,29 +136,43 @@ def modulo_funcionario():
     
     while op != '0':
         if op == '1':
+            os.system('cls')
+
             print('\nCADASTRAR FUNCIONÁRIO')
 
             func_read_data()
 
         elif op == '2':
+            os.system('cls')
+
             print('\nATUALIZAR FUNCIONÁRIO')
 
-            cpf = input("\nDigite o CPF do funcionario: ")
+            func_read()
+
+            cpf = input("\nDigite o CPF do funcionário: ")
 
             func_update(cpf)
 
         elif op == '3':
+            os.system('cls')
+
             print('\nLISTAR FUNCIONÁRIO')
 
             func_read()
 
         elif op == '4':
+            os.system('cls')
+
             print('\nPESQUISAR FUNCIONÁRIO')
 
             func_search()
             
         elif op == '5':
+            os.system('cls')
+
             print('\nDELETAR FUNCIONÁRIO')
+            
+            func_read()
 
             cpf = input('\nDigite o CPF do Funcionario: ')
 

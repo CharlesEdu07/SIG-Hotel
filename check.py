@@ -1,5 +1,6 @@
 import os
 import pickle
+from hospede import hosp_read
 from reserva import res_read, reservas, res_load_file
 from datetime import datetime
 
@@ -77,22 +78,28 @@ def check_out(apt):
         print("\nQuarto não ocupado")
 
 def check_read_data(code):
-    cpf = input("\nDigite o CPF: ")
-    apt = input("Digite o número do quarto: ")
+    if res_read():
+        print()
+
+        apt = input("Digite o número do quarto: ")
+
+        hosp_read()
+
+        cpf = input("\nDigite o CPF: ")
             
-    if apt in reservas:
-        if cpf in reservas[apt]['cpf']:
-            if code == '1':
-                check_in(apt)
+        if apt in reservas:
+            if cpf in reservas[apt]['cpf']:
+                if code == '1':
+                    check_in(apt)
+
+                else:
+                    check_out(apt)
 
             else:
-                check_out(apt)
-
-        else:
-            print('\nCPF não vinculado ao quarto')
+                print('\nCPF não vinculado ao quarto')
                     
-    else:
-        print("\nReserva não encontrada")
+        else:
+            print("\nReserva não encontrada")
 
 def modulo_check():
     op = menu_check()
@@ -102,13 +109,13 @@ def modulo_check():
 
     while op != '0':
         if op == '1':
-            print()
-
-            res_read()
+            os.system('cls')
 
             check_read_data('1')
 
         elif op == '2':
+            os.system('cls')
+
             print("\nCHECK-OUT")
 
             check_read_data('2')
