@@ -31,9 +31,6 @@ def hosp_load_file():
     ld_hospede = {}
 
     try:
-        '''with open('hospede.dat', 'rb') as f:
-            ld_hospede = pickle.load(f)'''
-
         arq_hospede = open("hospede.dat", "rb")
         ld_hospede = pickle.load(arq_hospede)
         arq_hospede.close()

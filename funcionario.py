@@ -21,9 +21,6 @@ def menu_funcionario():
     return op
 
 def func_write_file():  
-    '''with open('funcionario.dat', 'wb') as f: 
-        pickle.dump(funcionario, f)'''
-
     arq_funcionario = open("funcionario.dat", "wb")
 
     pickle.dump(funcionario, arq_funcionario)
@@ -34,9 +31,6 @@ def func_load_file():
     ld_funcionario = {}
 
     try:
-        '''with open('funcionario.dat', 'rb') as f:
-            ld_funcionario = pickle.load(f)'''
-
         arq_funcionario = open("funcionario.dat", "rb")
         ld_funcionario = pickle.load(arq_funcionario)
         arq_funcionario.close()

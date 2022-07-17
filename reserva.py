@@ -1,8 +1,5 @@
 import os
 import pickle
-from datetime import date
-
-from numpy import empty
 from hospede import hospede, hosp_load_file, hosp_write_file
 
 quartos = {
@@ -36,13 +33,7 @@ def menu_reserva():
     return op
 
 def res_write_file():  
-    '''with open('reserva.dat', 'wb') as f: 
-        pickle.dump(reservas, f)'''
-
     arq_reserva = open("reserva.dat", "wb")
-
-    print(reservas)
-    print('res_write_file')
 
     pickle.dump(reservas, arq_reserva)
 
@@ -52,9 +43,6 @@ def res_load_file():
     ld_reserva = {}
 
     try:
-        '''with open('reserva.dat', 'rb') as f:
-            ld_reserva = pickle.load(f)'''
-
         arq_reserva = open("reserva.dat", "rb")
         ld_reserva = pickle.load(arq_reserva)
         arq_reserva.close()
@@ -67,11 +55,13 @@ def res_load_file():
 
 def res_create(data):
     if data['apt'] not in reservas:
-        reservas[data['apt']] = {'apt': data['apt'],
-        'is_ocupado': data['is_ocupado'],
-        'cpf':data['cpf'],
-        'nome': data['nome'],
-        'valor': data['valor']}
+        reservas[data['apt']] = {
+            'apt': data['apt'],
+            'is_ocupado': data['is_ocupado'],
+            'cpf':data['cpf'],
+            'nome': data['nome'],
+            'valor': data['valor']
+        }
         
         print('\nReserva cadastrada com sucesso')
 
@@ -116,9 +106,6 @@ def res_search():
     apt = input("\nDigite o número do quarto: ")
     
     if apt in reservas:
-        print(reservas)
-        print(reservas[apt]['is_ocupado'])
-
         print("\nQuarto: ", apt, "\tValor: ", reservas[apt]['valor'], '\nHospede: ', reservas[apt]['nome'])
         
         if reservas[apt]['is_ocupado'] == "sim" :
