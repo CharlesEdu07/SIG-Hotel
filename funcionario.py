@@ -105,6 +105,11 @@ def func_delete(cpf):
 
 def func_read_data():
     nome = input("\nDigite o nome do funcionario: ")
+
+    while not(valida_nome(nome)):
+        print("\nNome inválido. Digite novamente")
+        nome = input("\nDigite o nome do funcionario: ")
+
     cpf = input("Digite o CPF do funcionario: ")
 
     while not(validaCPF(cpf)):

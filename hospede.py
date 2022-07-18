@@ -52,13 +52,13 @@ def hosp_create(data):
 
 def hosp_update(cpf):    
     if cpf in hospede:
-        email = input("\nDigite o email: ")
-        endereco = input("Digite o endereco: ")
-        telefone = input("Digite o telefone: ")
+        email = input("\nDigite o novo email: ")
+        endereco = input("Digite o novo endereco: ")
+        telefone = input("Digite o novo telefone: ")
 
         while not(valida_telefone(telefone)):
             print("\nTelefone inválido. Digite novamente")
-            telefone = input("\nDigite o telefone: ")
+            telefone = input("\nDigite o novo telefone: ")
         
         hospede[cpf]['email'] = email
         hospede[cpf]['endereco'] = endereco
@@ -108,6 +108,11 @@ def hosp_delete(cpf):
 
 def hosp_read_data():
     nome = input("\nDigite o nome do hospede: ")
+
+    while not(valida_nome(nome)):
+        print("\nNome inválido. Digite novamente")
+        nome = input("\nDigite o nome do hospede: ")
+
     cpf = input("Digite o CPF do hospede: ")
 
     while not(validaCPF(cpf)):

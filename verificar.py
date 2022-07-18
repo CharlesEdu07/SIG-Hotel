@@ -57,3 +57,12 @@ def valida_telefone(telefone):
         return False
 
     return True
+
+def valida_nome(nome):
+    if not nome.isalpha():
+        return False
+
+    if nome == "":
+        return False
+
+    return True
