@@ -38,7 +38,7 @@ def check_in(apt):
 
         print("\nCheck-in feito com sucesso. O quarto está agora ocupado")
 
-    else :
+    else:
         print("\nQuarto ocupado")
 
 def check_out(apt):

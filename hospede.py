@@ -88,14 +88,17 @@ def hosp_search():
     cpf = input('\nDigite o CPF do hóspede (Se não souber, tecle ENTER): ')
     name = input('Digite o nome do hóspede: ')
 
+    achou = False
+
     print()
 
     for key, value in hospede.items():
-        if key == cpf or value['nome'] == name.capitalize():
+        if key == cpf or name.capitalize() in value['nome']:
             print("Nome: ", value['nome'], "\tCPF: ", value['cpf'], "\tTelefone: ", value['telefone'], "\tEmail: ", value['email'], "\tEndereço: ", value['endereco'])
-            return
+            achou = True
 
-    print('\nHóspede não encontrado')
+    if not achou:
+        print('Hóspede não encontrado')
 
 def hosp_delete(cpf):
     if cpf in hospede:

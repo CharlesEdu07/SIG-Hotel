@@ -67,14 +67,17 @@ def func_search():
     cpf = input('\nDigite o CPF do funcionario (Se não souber, tecle ENTER): ')
     name = input('Digite o nome do funcionario: ')
 
+    achou = False
+
     print()
 
     for key, value in funcionario.items():
-        if key == cpf or value['nome'] == name.capitalize():
+        if key == cpf or name.capitalize() in value['nome']:
             print("Nome: ", value['nome'], "\tCPF: ", value['cpf'], "\tSalario: ", value['salario'], "\tOcupacao: ", value['ocupacao'])
-            return
-
-    print('\nFuncionario não encontrado')
+            achou = True
+    
+    if not achou:
+        print('Funcionario não encontrado')
 
 def func_update(cpf):
     if cpf in funcionario:
