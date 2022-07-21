@@ -53,6 +53,11 @@ def hosp_create(data):
 def hosp_update(cpf):    
     if cpf in hospede:
         email = input("\nDigite o novo email: ")
+
+        while not(valida_email(email)):
+            print("\nEmail inválido. Digite novamente")
+            email = input("\nDigite o novo email: ")
+
         endereco = input("Digite o novo endereco: ")
         telefone = input("Digite o novo telefone: ")
 
@@ -123,6 +128,11 @@ def hosp_read_data():
         cpf = input("\nDigite o CPF do hospede: ")
 
     email = input("Digite o email do hospede: ")
+
+    while not(valida_email(email)):
+        print("\nEmail inválido. Digite novamente")
+        email = input("\nDigite o novo email: ")
+
     endereco = input("Digite o endereco do hospede: ")
     telefone = input("Digite o telefone do hospede: ")
 

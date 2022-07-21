@@ -66,3 +66,12 @@ def valida_nome(nome):
         return False
 
     return True
+
+def valida_email(email):
+    if email == "":
+        return False
+
+    if "@" not in email:
+        return False
+
+    return True
