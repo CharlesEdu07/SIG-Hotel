@@ -71,7 +71,7 @@ def valida_email(email):
     if email == "":
         return False
 
-    if "@" not in email:
+    if "@" not in email and "." not in email:
         return False
 
     return True
