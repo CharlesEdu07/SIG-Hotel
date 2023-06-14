@@ -1,6 +1,6 @@
-# DesafioUnidade3
+# SIG-Hotel
 
-Projeto desenvolvido para a disciplina de Algoritmos e Lógica de Programação utilizando Python
+Projeto desenvolvido de mini-crud com temática de hotel feito em Python
 
 Desenvolvedores:
 
