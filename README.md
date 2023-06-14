@@ -6,3 +6,5 @@ Desenvolvedores:
 
 - Charles Eduardo Araújo de Faria
 - Halyson Santos de Araújo
+
+Rode o projeto através do arquivo sistema.py
